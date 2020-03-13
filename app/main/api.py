@@ -1,12 +1,10 @@
-from typing import Dict, List, Any, Tuple
-import json
-import pickle
+from typing import List
 
 from flask import Flask, jsonify, request
 from flask_restplus import Resource, Api, fields
 from pymongo import MongoClient
 
-from app.main.model.content_based.model import get_similar_beers, get_beer_keywords
+from app.main.mllib.recommender_models.content_based.model import get_similar_beers, get_beer_keywords
 from app.main.db.util import retrieve_bin_doc
 app = Flask(__name__)
 api = Api(
