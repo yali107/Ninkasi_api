@@ -2,7 +2,6 @@ from typing import List, Dict, Tuple, Any
 
 from pymongo import MongoClient
 
-
 def get_beer_keywords(beer_input, beer_list, corpus_tfidf, text_dict, ntop=20):
     """
     get all the relevant words for beer_input.
