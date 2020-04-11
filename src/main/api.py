@@ -1,13 +1,18 @@
 from typing import List, Dict
+from os import sys, path
+
 
 from flask import Flask, jsonify, request
 from flask_restplus import Resource, Api, fields
 from pymongo import MongoClient
 import numpy as np
 
-from app.main.mllib.recommender_models.content_based.model import get_similar_beers, get_beer_keywords
-from app.main.mllib.recommender_models.collaborative_filtering.model import get_beer_rec
-from app.main.db.util import retrieve_bin_doc, retrieve_ratings_svd, retrieve_beer_info
+from src.main.mllib.recommender_models.content_based.model import get_similar_beers, get_beer_keywords
+from src.main.mllib.recommender_models.collaborative_filtering.model import get_beer_rec
+from src.main.db.util import retrieve_bin_doc, retrieve_ratings_svd, retrieve_beer_info
+
+sys.path.append(path.dirname(path.dirname(path.abspath(__file__))))
+
 app = Flask(__name__)
 api = Api(
     app,

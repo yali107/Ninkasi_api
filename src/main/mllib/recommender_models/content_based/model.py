@@ -59,7 +59,7 @@ if __name__ == '__main__':
     #     corpus_tfidf = pickle.load(open("corpus_tfidf.p", "rb"))
     #     print('corpus_tfidf loaded')
 
-    from app.main.db.util import retrieve_bin_doc
+    from src.main.db.util import retrieve_bin_doc
 
     MONGO_CLIENT = MongoClient('localhost', 27017)
     DB = MONGO_CLIENT['ninkasi']

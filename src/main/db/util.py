@@ -59,7 +59,7 @@ def retrieve_beer_info(db, beer_names):
     return [{
         'beer_name': i,
         'state': beer_info[i][0],
-        'ave_user_rating': beer_info[i][1],
+        'avg_user_rating': beer_info[i][1],
         'avg_overall_rating': beer_info[i][2],
         'detail_link': beer_info[i][3]
     } for i in beer_names]

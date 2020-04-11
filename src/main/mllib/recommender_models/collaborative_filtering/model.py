@@ -98,7 +98,7 @@ if __name__ == '__main__':
         {'beer_name': 'Abita Bourbon Street Baltic Porter', 'preference': 20},
     ]
 
-    from app.main.db.util import retrieve_ratings_svd, retrieve_bin_doc
+    from src.main.db.util import retrieve_ratings_svd, retrieve_bin_doc
     from pymongo import MongoClient
 
     # test_users = [('Yazoo Embrace the Funk Series: Deux Rouges', 20), ("Iron Hill Bourbon Porter", 3)]
