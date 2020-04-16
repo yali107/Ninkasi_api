@@ -106,5 +106,12 @@ if __name__ == '__main__':
     # ratt_arr = retrieve_ratings_svd(DB)
     # file_arr = np.load('C:\\LiYuan\\personal-projects\\Ninkasi\\api\\app\\main\\mllib\\data\\cf\\ratings_svdpp.npy')
     # print(ratt_arr)
+    # corpus_tfidf = retrieve_bin_doc(DB, 'cbCorpusTfidf', 'corpus_tfidf')
+    ind_sim_mat = retrieve_bin_doc(DB, 'cbIndexSimMat', 'ind_sim_mat')
+    text_dict = retrieve_bin_doc(DB, 'cbTextDict', 'text_dict')
+    beer_dict: Dict = retrieve_bin_doc(DB, 'cfBeerDict', 'beer_dict', type_of='None')
+    with open('../mllib/data/cb/ind_sim_mat.p', 'wb') as f:
+        pickle.dump(ind_sim_mat, f)
+    print(ind_sim_mat)
 
-    print(retrieve_beer_info(DB, ['(512) Cascabel Cream Stout', '1809 Berliner Style Weisse Zymatore - Gin & Pinot Noir Barrels']))
+    # print(retrieve_beer_info(DB, ['(512) Cascabel Cream Stout', '1809 Berliner Style Weisse Zymatore - Gin & Pinot Noir Barrels']))
