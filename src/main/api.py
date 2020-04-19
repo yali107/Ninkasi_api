@@ -1,15 +1,15 @@
 from typing import List, Dict
 from os import sys, path
-
+import json
 
 from flask import Flask, jsonify, request
 from flask_restplus import Resource, Api, fields
 from pymongo import MongoClient
 import numpy as np
 
-from src.main.mllib.recommender_models.content_based.model import get_similar_beers, get_beer_keywords
-from src.main.mllib.recommender_models.collaborative_filtering.model import get_beer_rec
-from src.main.db.util import retrieve_bin_doc, retrieve_ratings_svd, retrieve_beer_info
+from mllib.recommender_models.content_based.model import get_similar_beers, get_beer_keywords
+from mllib.recommender_models.collaborative_filtering.model import get_beer_rec
+from db.util import retrieve_bin_doc, retrieve_ratings_svd, retrieve_beer_info
 
 sys.path.append(path.dirname(path.dirname(path.abspath(__file__))))
 
@@ -42,6 +42,8 @@ class BeerList(Resource):
     @api.doc('list of beers')
     def get(self):
         beer_list: List = retrieve_bin_doc(DB, 'cbBeerNames', 'beer_name')
+        with open('./beer_list.json', 'r') as f:
+            beer_list = json.load(f)
         response = jsonify(beer_list)
         response.headers.add('Access-Control-Allow-Origin', '*')
         return response
@@ -115,4 +117,4 @@ class CollabFilterBeerRec(Resource):
 
 
 if __name__ == '__main__':
-    app.run(debug=True, port=5200)
+    app.run(debug=True, port=8866)
